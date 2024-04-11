@@ -13,10 +13,6 @@ abstract class Player implements Comparable<Player> {
         this.overallRating = overallRating;
     }
 
-    public int getOverallRating() {
-        return overallRating;
-    }
-
     public abstract int getRankForTeam(Team team);
 
     @Override

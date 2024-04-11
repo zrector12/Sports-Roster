@@ -1,38 +1,31 @@
-public class Player {
-    private String fName;
-    private String lName;
-    private String position;
-    private int OverallRating;
-    private String playStyle;
-    private int adaptability;
-    public int getOverallRating() {
-        return OverallRating;
-    }
-    public String getPlayStyle() {
-        return playStyle;
-    }
-    public int getAdaptability() {
-        return adaptability;
-    }
+package Finalproject.src;
 
-    public String getfName() {
-        return fName;
-    }
+abstract class Player implements Comparable<Player> {
+    protected String firstName;
+    protected String lastName;
+    protected String position;
+    protected int overallRating;
 
-    public String getlName() {
-        return lName;
-    }
-
-    public String getPosition() {
-        return position;
-    }
-
-    public Player(String fName, String lName, String position, int overallRating, String playStyle, int adaptability) {
-        this.fName = fName;
-        this.lName = lName;
+    public Player(String firstName, String lastName, String position, int overallRating) {
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.position = position;
-        OverallRating = overallRating;
-        this.playStyle = playStyle;
-        this.adaptability = adaptability;
+        this.overallRating = overallRating;
+    }
+
+    public int getOverallRating() {
+        return overallRating;
+    }
+
+    public abstract int getRankForTeam(Team team);
+
+    @Override
+    public int compareTo(Player other) {
+        return Integer.compare(other.overallRating, this.overallRating);
+    }
+
+    @Override
+    public String toString() {
+        return firstName + " " + lastName + " (" + position + ") - Overall Rating: " + overallRating;
     }
 }
